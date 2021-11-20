@@ -79,7 +79,9 @@ class _HomepageState extends State<Homepage> {
                           _showMessage = 'game over';
                         }
                         final List<int> _list1 = <int>[];
-                        _list.expand((ListElement data) => <void>[if (data.firstplayer) _list1.add(data.index)]).toList();
+                        _list
+                            .expand((ListElement data) => <void>[if (data.firstplayer) _list1.add(data.index)])
+                            .toList();
                         if (<int>[0, 1, 2].every((int element) => _list1.contains(element)) ||
                             <int>[3, 4, 5].every((int element) => _list1.contains(element)) ||
                             <int>[6, 7, 8].every((int element) => _list1.contains(element)) ||
@@ -93,7 +95,9 @@ class _HomepageState extends State<Homepage> {
                           _showMessage = 'first player win';
                         }
                         final List<int> _list2 = <int>[];
-                        _list.expand((ListElement data) => <void>[if (data.secondplayer) _list2.add(data.index)]).toList();
+                        _list
+                            .expand((ListElement data) => <void>[if (data.secondplayer) _list2.add(data.index)])
+                            .toList();
                         if (<int>[0, 1, 2].every((int element) => _list2.contains(element)) ||
                             <int>[3, 4, 5].every((int element) => _list2.contains(element)) ||
                             <int>[6, 7, 8].every((int element) => _list2.contains(element)) ||
