@@ -82,32 +82,15 @@ class _HomepageState extends State<Homepage> {
                         _list
                             .expand((ListElement data) => <void>[if (data.firstplayer) _list1.add(data.index)])
                             .toList();
-                        if (<int>[0, 1, 2].every((int element) => _list1.contains(element)) ||
-                            <int>[3, 4, 5].every((int element) => _list1.contains(element)) ||
-                            <int>[6, 7, 8].every((int element) => _list1.contains(element)) ||
-                            <int>[0, 3, 6].every((int element) => _list1.contains(element)) ||
-                            <int>[1, 4, 7].every((int element) => _list1.contains(element)) ||
-                            <int>[2, 5, 8].every((int element) => _list1.contains(element)) ||
-                            <int>[0, 4, 8].every((int element) => _list1.contains(element)) ||
-                            <int>[2, 4, 6].every((int element) => _list1.contains(element))) {
-                          _showButton = true;
-                          _endGame = true;
+
+                        if (checkWin(_list1)) {
                           _showMessage = 'first player win';
                         }
                         final List<int> _list2 = <int>[];
                         _list
                             .expand((ListElement data) => <void>[if (data.secondplayer) _list2.add(data.index)])
                             .toList();
-                        if (<int>[0, 1, 2].every((int element) => _list2.contains(element)) ||
-                            <int>[3, 4, 5].every((int element) => _list2.contains(element)) ||
-                            <int>[6, 7, 8].every((int element) => _list2.contains(element)) ||
-                            <int>[0, 3, 6].every((int element) => _list2.contains(element)) ||
-                            <int>[1, 4, 7].every((int element) => _list2.contains(element)) ||
-                            <int>[2, 5, 8].every((int element) => _list2.contains(element)) ||
-                            <int>[0, 4, 8].every((int element) => _list2.contains(element)) ||
-                            <int>[2, 4, 6].every((int element) => _list2.contains(element))) {
-                          _showButton = true;
-                          _endGame = true;
+                        if (checkWin(_list2)) {
                           _showMessage = 'second player win';
                         }
                       });
@@ -123,6 +106,7 @@ class _HomepageState extends State<Homepage> {
               children: <Widget>[
                 Text(
                   _showMessage,
+                  style: const TextStyle(fontSize: 30.0, color: Colors.red, inherit: false),
                 ),
                 ElevatedButton(
                   onPressed: () {
@@ -140,6 +124,22 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
     );
+  }
+
+  bool checkWin(List<int> _list) {
+    if (<int>[0, 1, 2].every((int element) => _list.contains(element)) ||
+        <int>[3, 4, 5].every((int element) => _list.contains(element)) ||
+        <int>[6, 7, 8].every((int element) => _list.contains(element)) ||
+        <int>[0, 3, 6].every((int element) => _list.contains(element)) ||
+        <int>[1, 4, 7].every((int element) => _list.contains(element)) ||
+        <int>[2, 5, 8].every((int element) => _list.contains(element)) ||
+        <int>[0, 4, 8].every((int element) => _list.contains(element)) ||
+        <int>[2, 4, 6].every((int element) => _list.contains(element))) {
+      _showButton = true;
+      _endGame = true;
+      return true;
+    }
+    return false;
   }
 }
 
