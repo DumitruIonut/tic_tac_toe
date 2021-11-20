@@ -3,7 +3,7 @@ on:
   push:
 
 jobs:
-  qulity_check:
+  quality_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
